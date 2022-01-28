@@ -112,8 +112,8 @@ FROM
 (SELECT name 
 FROM names
 GROUP BY name
-HAVING COUNT(DISTINCT year) = MAX(year) - MIN(year)) AS yearly_names;
---6,771
+HAVING COUNT(DISTINCT year) = (SELECT MAX(year) - MIN(year) FROM names)) AS yearly_names;
+--120
 
 --16. How many names have only appeared in one year?
 SELECT 
